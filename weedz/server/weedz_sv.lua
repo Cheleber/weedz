@@ -136,10 +136,10 @@ AddEventHandler("weedz:checkcolheita1", function()
 end)
 
 RegisterServerEvent("weedz:water")
-AddEventHandler("weedz:water", function(water)
+AddEventHandler("weedz:water", function(water, plantanr)
 	local dados   = MySQL.Sync.fetchAll('SELECT * FROM weed')
     for i=1, #dados, 1 do
-	    if dados[i].Spot == 1 then -- CAMP nº1
+	    if dados[i].Spot == plantanr then 
 			if dados[i].Ready == 0 then
 			    MySQL.Async.execute("UPDATE weed SET Water=@WATER WHERE ID=@ii", {["@WATER"] = water, ['@ii'] = dados[i].ID})
 			end
@@ -148,10 +148,10 @@ AddEventHandler("weedz:water", function(water)
 end)
 
 RegisterServerEvent("weedz:fertilizer")
-AddEventHandler("weedz:fertilizer", function(fertilizer)
+AddEventHandler("weedz:fertilizer", function(fertilizer, plantanr)
 	local dados   = MySQL.Sync.fetchAll('SELECT * FROM weed')
     for i=1, #dados, 1 do
-	    if dados[i].Spot == 1 then -- CAMP nº1
+	    if dados[i].Spot == plantanr then 
 			if dados[i].Ready == 0 then
 			    MySQL.Async.execute("UPDATE weed SET Fertilizer=@FERTILIZER WHERE ID=@ii", {["@FERTILIZER"] = fertilizer, ['@ii'] = dados[i].ID})
 			end
