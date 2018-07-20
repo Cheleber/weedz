@@ -51,7 +51,7 @@ function AddMenuKetchup(menu)
 	    local newitem = NativeUI.CreateItem("Add fertilizer?", "Do you wish to add fertilizer?")
         menu:AddItem(newitem)
 		newitem.Activated = function(ParentMenu, SelectedItem)
-		   TriggerServerEvent("weedz:fertilizer", 1)
+		   TriggerServerEvent("weedz:fertilizer", 1, planta)
 		   TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 		   FreezeEntityPosition(GetPlayerPed(-1),true)
 		   checker = true
@@ -84,7 +84,7 @@ function AddMenuAnotherMenu(menu)
 			ww = wfinal
 			if wfinal > 100 then wfinal = 100 end
 			if wfinal < 0 then wfinal = 0 end
-		    TriggerServerEvent("weedz:water", wfinal)
+		    TriggerServerEvent("weedz:water", wfinal, planta)
 			TaskStartScenarioInPlace(GetPlayerPed(-1), "CODE_HUMAN_MEDIC_KNEEL", 0, true)
 			FreezeEntityPosition(GetPlayerPed(-1),true)
 			checker = true
