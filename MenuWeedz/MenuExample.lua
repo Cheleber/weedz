@@ -42,7 +42,7 @@ end)
 
 RegisterNetEvent('weedz:menuclose')
 AddEventHandler("weedz:menuclose", function()
-	mainMenu:Visible(not mainMenu:Visible())
+	mainMenu:Visible(false)
 	menuisopen = false
 end)
 
@@ -143,7 +143,7 @@ Citizen.CreateThread(function()
     while true do
 
         Wait(0)
-        if menuisopen then
+        if menuisopen and planta == 1 then
             local coords      = GetEntityCoords(GetPlayerPed(-1))
             for k,v in pairs(Config.ZoneP) do
                 if(GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) > Config.ZoneSize.x) then
@@ -152,5 +152,32 @@ Citizen.CreateThread(function()
             end
 
         end
-	end
+		if menuisopen and planta == 2 then
+            local coords      = GetEntityCoords(GetPlayerPed(-1))
+            for k,v in pairs(Config.ZoneP2) do
+                if(GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) > Config.ZoneSize.x) then
+				    TriggerEvent("weedz:menuclose")
+                end
+            end
+
+        end
+		if menuisopen and planta == 3 then
+            local coords      = GetEntityCoords(GetPlayerPed(-1))
+            for k,v in pairs(Config.ZoneP3) do
+                if(GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) > Config.ZoneSize.x) then
+				    TriggerEvent("weedz:menuclose")
+                end
+            end
+
+        end
+		if menuisopen and planta == 4 then
+            local coords      = GetEntityCoords(GetPlayerPed(-1))
+            for k,v in pairs(Config.ZoneP4) do
+                if(GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) > Config.ZoneSize.x) then
+				    TriggerEvent("weedz:menuclose")
+                end
+            end
+
+        end
+    end
 end)
