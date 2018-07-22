@@ -188,6 +188,7 @@ AddEventHandler("weedz:senddata", function(p, pp, t, water, Spot)
 	end
 	if pp == 1 then tempo[Spot] = 0 end
     if water == 0 then tempo[Spot] = t end	
+	if t < tempo[Spot] then tempo[Spot] = t end	
 	if p == 0 then
 	    objetoweed[Spot] = 0
 	end

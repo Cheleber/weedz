@@ -128,7 +128,7 @@ AddEventHandler("weedz:checkcolheita1", function()
 	local dados   = MySQL.Sync.fetchAll('SELECT * FROM weed')
 	local check = {}
     for i=1, #dados, 1 do
-	    if dados[i].Spot > 0 then
+	    if dados[i].Spot > 0 and dados[i].Status == 1 then
             TriggerClientEvent("weedz:senddata", -1, dados[i].Status, dados[i].Ready, dados[i].Timer, dados[i].Water, dados[i].Spot)
 			TriggerClientEvent("weedz:info", -1, dados[i].Water, dados[i].Fertilizer, dados[i].Quality, dados[i].Spot)		
 		end
@@ -182,7 +182,7 @@ function PlantarWeed(source, spt)
 			PlayersPlantandoWeeds[source] = false
 			TriggerClientEvent("weedz:sucessplanted", source, spt)
 	        TriggerClientEvent("weedz:plantadissimo", -1, spt)
-			 TriggerClientEvent("weedz:plantadissimot", -1, spt)
+			TriggerClientEvent("weedz:plantadissimot", -1, spt)
 			print("SOURCE PLANTAR:" .. LockPlantar[spt])
 			LockPlantar[spt] = nil
 	        print("SPOT PLANTAR:" .. spt)
